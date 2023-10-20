@@ -2,17 +2,18 @@
 
 require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
+use \Slim\Slim;
+use \p3dr7\Page;
+
+$app = new Slim();
 
 $app->config('debug', true);
 
 $app->get('/', function() {
-    
-	$sql = new p3dr7\DB\Sql();
-
-	$results = $sql->select("SELECT * FROM tb_users");
-	echo json_encode($results);
-
+    $page = new Page();
+	//chama header
+	/*Cria o Elemento*/$page->setTpl('index');
+	//chama footer
 });
 
 $app->run();
